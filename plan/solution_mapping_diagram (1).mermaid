@@ -1,0 +1,71 @@
+graph TD
+    %% Problems (Left Side)
+    A[Ghana Birth Registration Problems] --> B[Geographic Barriers]
+    A --> C[System Integration Issues]
+    A --> D[Community Awareness Problems]
+    A --> E[Infrastructure Limitations]
+    A --> F[Registry Operations Issues]
+
+    B --> B1[Island Communities Isolation]
+    B --> B2[Mobility Constraints]
+    C --> C1[LHIMS Integration Gaps]
+    C --> C2[Birth & Death Registry Portal Limitations]
+    C --> C3[Generic Baby Registration in LHIMS]
+    D --> D1[Users Don't Feel Need for Birth Cert]
+    D --> D2[Lack of Registration During Childbirth]
+    D --> D3[Manual Data Entry Errors]
+    D --> D4[Document Processing Delays]
+    D --> D5[Cost Concerns - Late Registration]
+    E --> E1[Limited/No Internet Access]
+    F --> F4[Inadequate Staff Levels]
+
+    %% Solutions (Right Side)
+    G[Your Proposed Solutions] --> H[Progressive Web App System]
+    G --> I[Health Worker Integration]
+    G --> J[Seamless API Integration]
+    G --> K[Immediate Certificate Printing]
+    G --> L[Offline-First Capability]
+    G --> M[AI-Powered Intelligence Layer]
+
+    H --> H1[Comprehensive Registration Form]
+    H --> H2[Father & Mother Information Capture]
+    H --> H3[All Required Data Fields]
+    I --> I1[Registration at Point of Contact]
+    I --> I2[LHIMS to System Integration]
+    I --> I3[Orphan Data Merging]
+    J --> J1[Birth & Death Registry API Call]
+    J --> J2[Automatic Registration Number Generation]
+    K --> K1[Initial Birth Certificate Printing]
+    K --> K2[Hospital-Similar Format]
+    L --> L1[Offline Form Completion]
+    L --> L2[Auto-Sync When Online]
+    M --> M1[Document OCR & Data Extraction]
+    M --> M2[Smart Name Validation & Matching]
+    M --> M3[Multilingual Processing]
+    M --> M4[Predictive Registration Analytics]
+
+    %% Solution Connections (Problem → Solution)
+    B1 -.->|Addresses| L[Offline-First Capability]
+    B2 -.->|Addresses| H[Progressive Web App System]
+    C1 -.->|Addresses| I[Health Worker Integration]
+    C2 -.->|Addresses| J[Seamless API Integration]
+    C3 -.->|Addresses| I2[LHIMS to System Integration]
+    D1 -.->|Addresses| I1[Registration at Point of Contact]
+    D2 -.->|Addresses| I1[Registration at Point of Contact]
+    D3 -.->|Addresses| M[AI-Powered Intelligence Layer]
+    D4 -.->|Addresses| M1[Document OCR & Data Extraction]
+    D5 -.->|Addresses| I1[Registration at Point of Contact]
+    E1 -.->|Addresses| L[Offline-First Capability]
+    F4 -.->|Addresses| H[Progressive Web App System]
+
+    %% Styling
+    classDef problemNode fill:#ff6b6b,stroke:#333,stroke-width:2px,color:#fff
+    classDef solutionNode fill:#4ecdc4,stroke:#333,stroke-width:2px,color:#fff
+    classDef specificProblem fill:#ffb3b3,stroke:#333,stroke-width:1px,color:#333
+    classDef specificSolution fill:#a8e6e1,stroke:#333,stroke-width:1px,color:#333
+    classDef connection stroke:#666,stroke-width:2px,stroke-dasharray: 5 5
+
+    class A,B,C,D,E,F,G problemNode
+    class H,I,J,K,L solutionNode
+    class B1,B2,C1,C2,C3,D1,D2,D5,E1,F4 specificProblem
+    class H1,H2,H3,I1,I2,I3,J1,J2,K1,K2,L1,L2 specificSolution

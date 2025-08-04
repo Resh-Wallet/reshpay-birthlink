@@ -1,26 +1,293 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  
+  /* Semantic Color Mappings */
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-light: var(--primary-light);
+  --color-primary-bg: var(--primary-bg);
+  
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary-hover: var(--secondary-hover);
+  --color-secondary-light: var(--secondary-light);
+  --color-secondary-bg: var(--secondary-bg);
+  
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-light: var(--accent-light);
+  --color-accent-bg: var(--accent-bg);
+  
+  --color-medical: var(--medical);
+  --color-medical-foreground: var(--medical-foreground);
+  --color-medical-hover: var(--medical-hover);
+  --color-medical-light: var(--medical-light);
+  --color-medical-bg: var(--medical-bg);
+  
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-bg: var(--success-bg);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-warning-bg: var(--warning-bg);
+  --color-error: var(--error);
+  --color-error-foreground: var(--error-foreground);
+  --color-error-bg: var(--error-bg);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-info-bg: var(--info-bg);
+  
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  
+  /* Ghana Green - Primary */
+  --primary: oklch(0.36 0.15 142);
+  --primary-foreground: oklch(1 0 0);
+  --primary-hover: oklch(0.32 0.15 142);
+  --primary-light: oklch(0.45 0.12 142);
+  --primary-bg: oklch(0.96 0.03 142);
+  
+  /* Ghana Gold - Secondary */
+  --secondary: oklch(0.58 0.186 45);
+  --secondary-foreground: oklch(0.14 0.166 26);
+  --secondary-hover: oklch(0.52 0.186 45);
+  --secondary-light: oklch(0.65 0.15 45);
+  --secondary-bg: oklch(0.96 0.04 45);
+  
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  
+  /* Ghana Red - Accent */
+  --accent: oklch(0.60 0.168 0);
+  --accent-foreground: oklch(1 0 0);
+  --accent-hover: oklch(0.54 0.168 0);
+  --accent-light: oklch(0.67 0.14 0);
+  --accent-bg: oklch(0.96 0.03 0);
+  
+  /* Medical Blue */
+  --medical: oklch(0.60 0.182 217);
+  --medical-foreground: oklch(1 0 0);
+  --medical-hover: oklch(0.54 0.182 217);
+  --medical-light: oklch(0.67 0.15 217);
+  --medical-bg: oklch(0.96 0.03 217);
+  
+  /* Status Colors */
+  --success: oklch(0.55 0.15 142);
+  --success-foreground: oklch(1 0 0);
+  --success-bg: oklch(0.95 0.03 142);
+  --warning: oklch(0.65 0.15 45);
+  --warning-foreground: oklch(0.2 0.15 45);
+  --warning-bg: oklch(0.95 0.03 45);
+  --error: oklch(0.60 0.168 0);
+  --error-foreground: oklch(1 0 0);
+  --error-bg: oklch(0.95 0.03 0);
+  --info: oklch(0.60 0.15 217);
+  --info-foreground: oklch(1 0 0);
+  --info-bg: oklch(0.95 0.03 217);
+  
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.36 0.15 142);
+  --chart-1: oklch(0.36 0.15 142);
+  --chart-2: oklch(0.58 0.186 45);
+  --chart-3: oklch(0.60 0.168 0);
+  --chart-4: oklch(0.60 0.182 217);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.36 0.15 142);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  
+  /* Ghana Green - Primary (adjusted for dark mode) */
+  --primary: oklch(0.50 0.15 142);
+  --primary-foreground: oklch(0.145 0 0);
+  --primary-hover: oklch(0.55 0.15 142);
+  --primary-light: oklch(0.45 0.12 142);
+  --primary-bg: oklch(0.22 0.05 142);
+  
+  /* Ghana Gold - Secondary (adjusted for dark mode) */
+  --secondary: oklch(0.65 0.15 45);
+  --secondary-foreground: oklch(0.145 0 0);
+  --secondary-hover: oklch(0.70 0.15 45);
+  --secondary-light: oklch(0.60 0.12 45);
+  --secondary-bg: oklch(0.22 0.04 45);
+  
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  
+  /* Ghana Red - Accent (adjusted for dark mode) */
+  --accent: oklch(0.65 0.15 0);
+  --accent-foreground: oklch(0.145 0 0);
+  --accent-hover: oklch(0.70 0.15 0);
+  --accent-light: oklch(0.60 0.12 0);
+  --accent-bg: oklch(0.22 0.04 0);
+  
+  /* Medical Blue (adjusted for dark mode) */
+  --medical: oklch(0.65 0.15 217);
+  --medical-foreground: oklch(0.145 0 0);
+  --medical-hover: oklch(0.70 0.15 217);
+  --medical-light: oklch(0.60 0.12 217);
+  --medical-bg: oklch(0.22 0.04 217);
+  
+  /* Status Colors (dark mode) */
+  --success: oklch(0.60 0.15 142);
+  --success-foreground: oklch(0.145 0 0);
+  --success-bg: oklch(0.20 0.05 142);
+  --warning: oklch(0.70 0.15 45);
+  --warning-foreground: oklch(0.145 0 0);
+  --warning-bg: oklch(0.20 0.04 45);
+  --error: oklch(0.65 0.15 0);
+  --error-foreground: oklch(0.145 0 0);
+  --error-bg: oklch(0.20 0.04 0);
+  --info: oklch(0.65 0.15 217);
+  --info-foreground: oklch(0.145 0 0);
+  --info-bg: oklch(0.20 0.04 217);
+  
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.50 0.15 142);
+  --chart-1: oklch(0.50 0.15 142);
+  --chart-2: oklch(0.65 0.15 45);
+  --chart-3: oklch(0.65 0.15 0);
+  --chart-4: oklch(0.65 0.15 217);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.50 0.15 142);
+  --sidebar-primary-foreground: oklch(0.145 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  /* Primary Colors */
+  .text-primary { color: var(--primary); }
+  .text-primary-foreground { color: var(--primary-foreground); }
+  .bg-primary { background-color: var(--primary); }
+  .bg-primary-foreground { background-color: var(--primary-foreground); }
+  .bg-primary-light { background-color: var(--primary-bg); }
+  .border-primary { border-color: var(--primary); }
+  
+  /* Secondary Colors */
+  .text-secondary { color: var(--secondary); }
+  .text-secondary-foreground { color: var(--secondary-foreground); }
+  .bg-secondary { background-color: var(--secondary); }
+  .bg-secondary-foreground { background-color: var(--secondary-foreground); }
+  .bg-secondary-light { background-color: var(--secondary-bg); }
+  .border-secondary { border-color: var(--secondary); }
+  
+  /* Accent Colors */
+  .text-accent { color: var(--accent); }
+  .text-accent-foreground { color: var(--accent-foreground); }
+  .bg-accent { background-color: var(--accent); }
+  .bg-accent-foreground { background-color: var(--accent-foreground); }
+  .bg-accent-light { background-color: var(--accent-bg); }
+  .border-accent { border-color: var(--accent); }
+  
+  /* Medical Colors */
+  .text-medical { color: var(--medical); }
+  .text-medical-foreground { color: var(--medical-foreground); }
+  .bg-medical { background-color: var(--medical); }
+  .bg-medical-foreground { background-color: var(--medical-foreground); }
+  .bg-medical-light { background-color: var(--medical-bg); }
+  .border-medical { border-color: var(--medical); }
+  
+  /* Status Colors */
+  .text-success { color: var(--success); }
+  .text-success-foreground { color: var(--success-foreground); }
+  .bg-success { background-color: var(--success); }
+  .bg-success-light { background-color: var(--success-bg); }
+  .border-success { border-color: var(--success); }
+  
+  .text-warning { color: var(--warning); }
+  .text-warning-foreground { color: var(--warning-foreground); }
+  .bg-warning { background-color: var(--warning); }
+  .bg-warning-light { background-color: var(--warning-bg); }
+  .border-warning { border-color: var(--warning); }
+  
+  .text-error { color: var(--error); }
+  .text-error-foreground { color: var(--error-foreground); }
+  .bg-error { background-color: var(--error); }
+  .bg-error-light { background-color: var(--error-bg); }
+  .border-error { border-color: var(--error); }
+  
+  .text-info { color: var(--info); }
+  .text-info-foreground { color: var(--info-foreground); }
+  .bg-info { background-color: var(--info); }
+  .bg-info-light { background-color: var(--info-bg); }
+  .border-info { border-color: var(--info); }
 }
