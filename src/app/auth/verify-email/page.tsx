@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { Button } from '@/components/ui/button'
@@ -12,7 +12,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
 import { Heart, Mail, CheckCircle, Loader2, RefreshCw, AlertCircle } from 'lucide-react'
 
-export default function VerifyEmailPage() {
+function VerifyEmailContent() {
   const searchParams = useSearchParams()
   const email = searchParams.get('email') || 'user@example.com'
   const token = searchParams.get('token')
@@ -294,5 +294,28 @@ export default function VerifyEmailPage() {
         </motion.div>
       </motion.div>
     </div>
+  )
+}
+
+export default function VerifyEmailPage() {
+  return (
+    <Suspense 
+      fallback={
+        <div className="min-h-screen bg-gradient-to-br from-info-light via-background to-primary-light flex items-center justify-center p-4">
+          <div className="absolute top-4 right-4">
+            <ThemeToggle />
+          </div>
+          <div className="w-full max-w-md">
+            <Card className="shadow-xl border-0 bg-card/95 backdrop-blur-sm">
+              <CardContent className="flex items-center justify-center py-8">
+                <Loader2 className="w-8 h-8 animate-spin text-info" />
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      }
+    >
+      <VerifyEmailContent />
+    </Suspense>
   )
 }
